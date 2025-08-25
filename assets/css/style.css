@@ -1,0 +1,407 @@
+:root {
+    --background-color: #f9fafb;
+    --text-color: #1f2937;
+    --card-bg: #ffffff;
+    --card-border: #e5e7eb;
+    --primary-color: #4f46e5;
+    --primary-hover: #4338ca;
+    --header-bg: #ffffff;
+    --header-shadow: rgba(0, 0, 0, 0.1);
+    --secondary-bg: #e5e7eb;
+    --secondary-text: #1f2937;
+    --code-bg: #f3f4f6;
+    --pending-comment-bg: #fffbe1;
+    --pending-comment-text: #78350f;
+    --button-text-on-primary: white;
+    --current-poetry-display-font: 'Playfair Display', serif;
+}
+
+body.dark {
+    --background-color: #0f172a;
+    --text-color: #f3f4f6;
+    --card-bg: #1f2937;
+    --card-border: #374151;
+    --primary-color: #a5b4fc;
+    --primary-hover: #818cf8;
+    --header-bg: #1f2937;
+    --header-shadow: rgba(0, 0, 0, 0.5);
+    --secondary-bg: #374151;
+    --secondary-text: #f3f4f6;
+    --code-bg: #374151;
+    --pending-comment-bg: #362f08;
+    --pending-comment-text: #fcd34d;
+    --button-text-on-primary: #1f2937;
+}
+
+body.sepia {
+    --background-color: #fdf6e3;
+    --text-color: #586e75;
+    --card-bg: #f5e8d0;
+    --card-border: #c9bda5;
+    --primary-color: #836953;
+    --primary-hover: #6a5749;
+    --header-bg: #f5e8d0;
+    --header-shadow: rgba(0, 0, 0, 0.2);
+    --secondary-bg: #e6d8c0;
+    --secondary-text: #586e75;
+    --code-bg: #f0e6d6;
+    --pending-comment-bg: #f0e6d6;
+    --pending-comment-text: #836953;
+    --button-text-on-primary: #333333;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+}
+
+.poetry-container {
+    background-color: var(--card-bg);
+    border-color: var(--card-border);
+}
+
+.filter-box {
+    background-color: var(--card-bg);
+    border-color: var(--card-border);
+}
+
+.font-urdu {
+    font-family: 'Noto Nastaliq Urdu', serif;
+    direction: rtl;
+}
+
+.font-poetry {
+    font-family: var(--current-poetry-display-font);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+@keyframes heartBeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+}
+.heart-beat-animation {
+    animation: heartBeat 0.5s ease-in-out;
+}
+
+@keyframes pop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+}
+.pop-animation {
+    animation: pop 0.3s ease-in-out;
+}
+
+.fade-out {
+    animation: fadeOut 0.5s forwards;
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; transform: translateY(1); }
+    to { opacity: 0; transform: translateY(20px); }
+}
+
+.header {
+    background-color: var(--header-bg);
+    box-shadow: 0 10px 15px -3px var(--header-shadow);
+}
+
+.header-logo-bg {
+    background-color: var(--secondary-bg);
+    transition: background-color 0.3s;
+}
+.header-logo-icon {
+    color: var(--primary-color);
+    transition: color 0.3s;
+}
+
+.dropdown-menu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
+    padding: 0 1rem;
+    position: absolute;
+    z-index: 40;
+    width: auto;
+    min-width: 450px;
+    max-width: 700px;
+    top: calc(100% + 0.5rem);
+    left: 0;
+    background-color: var(--card-bg);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    border-radius: 0.75rem;
+}
+
+
+.dm-s {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
+    padding: 0 1rem;
+    position: absolute;
+    z-index: 40;
+    width: auto;
+    min-width: 150px;
+    max-width: 300px;
+    top: calc(100% + 0.5rem);
+    left: 0;
+    background-color: var(--card-bg);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    border-radius: 0.75rem;
+}
+
+.dropdown-menu.active {
+    max-height: 80vh;
+    overflow-y: auto;
+    padding: 1rem;
+}
+
+.dropdown-btn-item {
+    border: 1px solid var(--card-border);
+    color: var(--text-color);
+    background-color: var(--secondary-bg);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dropdown-btn-item.active {
+    background-color: var(--primary-color);
+    color: var(--button-text-on-primary);
+    border-color: var(--primary-color);
+    box-shadow: 0 2px 4px -1px rgba(0,0,0,0.1);
+}
+
+.dropdown-btn-item:hover {
+    background-color: var(--primary-hover);
+    color: var(--button-text-on-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+body.dark .dropdown-btn-item {
+    border-color: rgba(255,255,255,0.1);
+}
+body.sepia .dropdown-btn-item {
+    border-color: rgba(0,0,0,0.1);
+}
+
+@media (max-width: 640px) {
+    #categories-menu {
+        left: 50%;
+        transform: translateX(-50%);
+        width: 95%;
+    }
+}
+
+.poetry-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+}
+
+.card-bg-urdu { background-image: linear-gradient(to bottom right, #f3f4f6, #e5e7eb); }
+.card-bg-nature { background-image: linear-gradient(to bottom right, #f0fdf4, #dcfce7); }
+.card-bg-quotes { background-image: linear-gradient(to bottom right, #eef2ff, #e0e7ff); }
+.card-bg-english { background-image: linear-gradient(to bottom right, #fffbeb, #fef3c7); }
+.card-bg-saraiki { background-image: linear-gradient(to bottom right, #f0fdf4, #d1fae5); }
+.card-bg-punjabi { background-image: linear-gradient(to bottom right, #fdf2f8, #fce7f3); }
+.card-bg-islamic { background-image: linear-gradient(to bottom right, #e0f7fa, #b2ebf2); }
+.card-bg-hindi { background-image: linear-gradient(to bottom right, #ffebee, #ffcdd2); }
+.card-bg-life { background-image: linear-gradient(to bottom right, #e8f5e9, #c8e6c9); }
+.card-bg-love { background-image: linear-gradient(to bottom right, #fef2f2, #fee2e2); }
+.card-bg-motivational { background-image: linear-gradient(to bottom right, #e3f2fd, #bbdefb); }
+.card-bg-sad { background-image: linear-gradient(to bottom right, #fbe9e7, #ffccbc); }
+.card-bg-heartbroken { background-image: linear-gradient(to bottom right, #fce4ec, #f8bbd0); }
+.card-bg-dua { background-image: linear-gradient(to bottom right, #e1f5fe, #b3e5fc); }
+.card-bg-funny { background-image: linear-gradient(to bottom right, #fffde7, #fff9c4); }
+.card-bg-pashto { background-image: linear-gradient(to bottom right, #f1f8e9, #dcedc8); }
+.card-bg-sindhi { background-image: linear-gradient(to bottom right, #e8f5e9, #b9f6ca); }
+.card-bg-farsi { background-image: linear-gradient(to bottom right, #e0f2f7, #b2ebf2); }
+.card-bg-arabic { background-image: linear-gradient(to bottom right, #f5f5f5, #e0e0e0); }
+.card-bg-turkish { background-image: linear-gradient(to bottom right, #fbe9e7, #ffe0b2); }
+.card-bg-romantic { background-image: linear-gradient(to bottom right, #fef2f2, #fee2e2); }
+.card-bg-patriotic { background-image: linear-gradient(to bottom right, #dcfce7, #a7f3d0); }
+.card-bg-deep { background-image: linear-gradient(to bottom right, #f0f9ff, #e0f2fe); }
+.card-bg-friendship { background-image: linear-gradient(to bottom right, #fefce8, #fef9c3); }
+.card-bg-attitude { background-image: linear-gradient(to bottom right, #ffe4e6, #fecdd3); }
+.card-bg-short { background-image: linear-gradient(to bottom right, #f3e8ff, #e9d5ff); }
+.card-bg-couple { background-image: linear-gradient(to bottom right, #fef2f2, #fee2e2); }
+.card-bg-peace { background-image: linear-gradient(to bottom right, #e0f2fe, #bfdbfe); }
+.card-bg-inspirational { background-image: linear-gradient(to bottom right, #ecfdf5, #d1fae5); }
+
+
+.dark .card-bg-urdu { background-image: linear-gradient(to bottom right, #374151, #4b5563); }
+.dark .card-bg-nature { background-image: linear-gradient(to bottom right, #064e3b, #15803d); }
+.dark .card-bg-quotes { background-image: linear-gradient(to bottom right, #312e81, #4338ca); }
+.dark .card-bg-english { background-image: linear-gradient(to bottom right, #78350f, #a16207); }
+    .dark .card-bg-saraiki { background-image: linear-gradient(to bottom right, #047857, #065f46); }
+.dark .card-bg-punjabi { background-image: linear-gradient(to bottom right, #831843, #a21273); }
+.dark .card-bg-islamic { background-image: linear-gradient(to bottom right, #006064, #00838f); }
+.dark .card-bg-hindi { background-image: linear-gradient(to bottom right, #b71c1c, #d32f2f); }
+.dark .card-bg-life { background-image: linear-gradient(to bottom right, #2e7d32, #388e3c); }
+.dark .card-bg-love { background-image: linear-gradient(to bottom right, #450a0a, #7f1d1d); }
+.dark .card-bg-motivational { background-image: linear-gradient(to bottom right, #1565c0, #1976d2); }
+.dark .card-bg-sad { background-image: linear-gradient(to bottom right, #bf360c, #e64a19); }
+.dark .card-bg-heartbroken { background-image: linear-gradient(to bottom right, #880e4f, #ad1457); }
+.dark .card-bg-dua { background-image: linear-gradient(to bottom right, #01579b, #0277bd); }
+.dark .card-bg-funny { background-image: linear-gradient(to bottom right, #f57f17, #fbc02d); }
+.dark .card-bg-pashto { background-image: linear-gradient(to bottom right, #558b2f, #689f38); }
+.dark .card-bg-sindhi { background-image: linear-gradient(to bottom right, #2e7d32, #43a047); }
+.dark .card-bg-farsi { background-image: linear-gradient(to bottom right, #006064, #00838f); }
+.dark .card-bg-arabic { background-image: linear-gradient(to bottom right, #424242, #616161); }
+.dark .card-bg-turkish { background-image: linear-gradient(to bottom right, #bf360c, #fb8c00); }
+.dark .card-bg-romantic { background-image: linear-gradient(to bottom right, #450a0a, #7f1d1d); }
+.dark .card-bg-patriotic { background-image: linear-gradient(to bottom right, #065f46, #047857); }
+.dark .card-bg-deep { background-image: linear-gradient(to bottom right, #1e3a8a, #172554); }
+.dark .card-bg-friendship { background-image: linear-gradient(to bottom right, #854d09, #ca8a04); }
+.dark .card-bg-attitude { background-image: linear-gradient(to bottom right, #831843, #a21273); }
+.dark .card-bg-short { background-image: linear-gradient(to bottom right, #4c1d95, #7c3aed); }
+.dark .card-bg-couple { background-image: linear-gradient(to bottom right, #450a0a, #7f1d1d); }
+.dark .card-bg-peace { background-image: linear-gradient(to bottom right, #075985, #1d4ed8); }
+.dark .card-bg-inspirational { background-image: linear-gradient(to bottom right, #047857, #065f46); }
+
+.sepia .card-bg-urdu { background-image: linear-gradient(to bottom right, #e8d0b2, #d1b490); }
+.sepia .card-bg-nature { background-image: linear-gradient(to bottom right, #e1fbd6, #c5e1b6); }
+.sepia .card-bg-quotes { background-image: linear-gradient(to bottom right, #e2eafb, #cdd7ee); }
+.sepia .card-bg-english { background-image: linear-gradient(to bottom right, #f3e9c4, #e8d9a4); }
+.sepia .card-bg-saraiki { background-image: linear-gradient(to bottom right, #e1fbd6, #c5e1b6); }
+.sepia .card-bg-punjabi { background-image: linear-gradient(to bottom right, #fbe1e1, #e1c0c0); }
+.sepia .card-bg-islamic { background-image: linear-gradient(to bottom right, #c8e6c9, #a5d6a7); }
+.sepia .card-bg-hindi { background-image: linear-gradient(to bottom right, #ffe0b2, #ffd699); }
+.sepia .card-bg-life { background-image: linear-gradient(to bottom right, #b2dfdb, #80cbc4); }
+.sepia .card-bg-love { background-image: linear-gradient(to bottom right, #fbeee1, #f0d5b4); }
+.sepia .card-bg-motivational { background-image: linear-gradient(to bottom right, #bbdefb, #90caf9); }
+.sepia .card-bg-sad { background-image: linear-gradient(to bottom right, #ffccbc, #ffab91); }
+.sepia .card-bg-heartbroken { background-image: linear-gradient(to bottom right, #f8bbd0, #f48fb1); }
+.sepia .card-bg-dua { background-image: linear-gradient(to bottom right, #b3e5fc, #81d4fa); }
+.sepia .card-bg-funny { background-image: linear-gradient(to bottom right, #fff9c4, #fff59d); }
+.sepia .card-bg-pashto { background-image: linear-gradient(to bottom right, #dcedc8, #c5e1a5); }
+.sepia .card-bg-sindhi { background-image: linear-gradient(to bottom right, #d4e8eb, #b8e0d4); }
+.sepia .card-bg-farsi { background-image: linear-gradient(to bottom right, #c8e6c9, #a5d6a7); }
+.sepia .card-bg-arabic { background-image: linear-gradient(to bottom right, #e0e0e0, #bdbdbd); }
+.sepia .card-bg-turkish { background-image: linear-gradient(to bottom right, #ffe0b2, #ffcc80); }
+.sepia .card-bg-romantic { background-image: linear-gradient(to bottom right, #fbeee1, #f0d5b4); }
+.sepia .card-bg-patriotic { background-image: linear-gradient(to bottom right, #c1dbc6, #a7e0c4); }
+.sepia .card-bg-deep { background-image: linear-gradient(to bottom right, #d4e8eb, #bdc9d0); }
+.sepia .card-bg-friendship { background-image: linear-gradient(to bottom right, #f0e6d6, #e6d8c0); }
+.sepia .card-bg-attitude { background-image: linear-gradient(to bottom right, #e8d0b2, #d1b490); }
+.sepia .card-bg-short { background-image: linear-gradient(to bottom right, #ebd6f0, #d1a5e1); }
+.sepia .card-bg-couple { background-image: linear-gradient(to bottom right, #fbeee1, #f0d5b4); }
+.sepia .card-bg-peace { background-image: linear-gradient(to bottom right, #d4e8eb, #abc8cf); }
+.sepia .card-bg-inspirational { background-image: linear-gradient(to bottom right, #d4e8eb, #c1dbc6); }
+
+.card-container {
+    transform: scale(1);
+    transition: transform 0.3s ease-in-out;
+}
+.card-container:hover {
+    transform: scale(1.05);
+}
+
+.card-icon {
+    transform: scale(1);
+    transition: transform 0.2s ease-in-out;
+}
+.card-icon:hover {
+    transform: scale(1.3) rotate(15deg);
+}
+
+.like-btn.liked i {
+    color: #ef4444;
+}
+
+.pagination-btn, .comment-form button[type="submit"] {
+    background-color: var(--primary-color);
+    color: var(--button-text-on-primary);
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.pagination-btn:hover, .comment-form button[type="submit"]:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+.pagination-btn:disabled {
+    background-color: var(--secondary-bg);
+    color: var(--secondary-text);
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.mode-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+#page-jump-input {
+    min-width: 60px;
+    transition: all 0.3s ease;
+}
+
+#page-jump-input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+}
+
+#generated-fonts-output h3 {
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: var(--primary-color);
+}
+
+summary {
+    cursor: pointer;
+    user-select: none;
+}
+
+details[open] summary .fa-chevron-down {
+    transform: rotate(180deg);
+}
+
+summary .fa-chevron-down {
+    transition: transform 0.3s ease-in-out;
+}
+
+@keyframes pop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+}
+.pop-animation {
+    animation: pop 0.3s ease-in-out;
+}
+
+#generated-fonts-output .font-mono {
+    font-family: 'Roboto Mono', monospace;
+}
+
+#generated-fonts-output .bg-card {
+    padding: 0.75rem;
+    border: 1px solid var(--card-border);
+}
+
+#generated-fonts-output .space-y-2 > div {
+    margin-top: 0.5rem;
+}
+#generated-fonts-output .space-y-2 > div:first-child {
+    margin-top: 0;
+}
